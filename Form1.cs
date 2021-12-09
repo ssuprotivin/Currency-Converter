@@ -34,19 +34,30 @@ namespace Конвертер_валют
 
         
 
-        public bool DigitsOnly (string str)
+         public bool DigitsOnly (string str)
         {
+            int dot = 0;
+            int symbol = 0;
             foreach (char c in str)
             {
                 if (c < '0' || c > '9')
-                    if (c == '.' || c ==',')
-                        return true;
-                else
-                    return false;
+                {
+                    if (c == '.' || c == ',')
+                    {
+                        dot++;
+                    }
+                    else
+                        symbol++;
+                }
+                
             }
-            return true;
-        }
 
+            if ((dot == 1 || dot == 0) && symbol == 0)
+                return true;
+            else
+                return false;
+
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
 
